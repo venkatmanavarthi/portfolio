@@ -1,10 +1,10 @@
-import Navigation from './componenets/Navigation';
-import AboutMe from './componenets/AboutMe';
-import Experience from './componenets/Experience';
-import Projects from './componenets/Projects';
-import Footer from './componenets/Footer';
-import Skills from './componenets/Skills';
-import Education from './componenets/Education';
+import Navigation from './components/Navigation';
+import AboutMe from './components/AboutMe';
+import Experience from './components/Experience';
+import Projects from './components/Projects';
+import Footer from './components/Footer';
+import Skills from './components/Skills';
+import Education from './components/Education';
 
 function App() {
   return (

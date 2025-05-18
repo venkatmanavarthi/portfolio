@@ -89,9 +89,16 @@
     ],
     "projects": [
         {
+            "title": "Yo-Yo Fitness App",
+            "type": "Hobby Project",
+            "summary": "A simple and effective way to track your Yo-Yo fitness test results and monitor your progress over time.",
+            "work": [],
+            "githubUrl": "https://github.com/venkatmanavarthi/Yo-Yo"
+        }, 
+        {
             "title": "LLM on Raspberry Pi",
             "type": "Hobby Project",
-            "summary": "",
+            "summary": "Run open-source LLMs on a Raspberry Pi for edge AI applications with lightweight models.",
             "work": [""]
         }, 
         {
