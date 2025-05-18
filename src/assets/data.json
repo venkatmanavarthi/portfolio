@@ -104,8 +104,9 @@
         {
             "title": "Portfolio Project",
             "type": "Hobby Project",
-            "summary": "",
-            "work": [""]
+            "summary": "A personal portfolio showcasing my projects, skills, and experience.",
+            "work": [""],
+            "githubUrl": "https://github.com/venkatmanavarthi/portfolio"
         }, 
         {
             "title": "Cram.it.all",
@@ -126,6 +127,9 @@
     ],
     "education": [
         {"school": "University of Missouri - Kansas City", "level": "Master's", "degree": "Computer Science", "from": "August 2022", "to": "June 2024"},
-        {"school": "Lovely Professional University", "level": "Bachelor's", "degree": "Computer Science", "from": "July 2018", "to": "May 2022"}
+        {"school": "Lovely Professional University", "level": "Bachelor's", "degree": "Computer Science", "from": "July 2018", "to": "May 2022"},
+        {"school": "Impulse Educational Institution", "level": "", "degree": "", "from": "April 2017", "to": "March 2018"},
+        {"school": "Sri Chaitanya Junior College", "level": "", "degree": "", "from": "June 2016", "to": "March 2017"},
+        {"school": "SSR School", "level": "", "degree": "", "from": "April 2012", "to": "March 2016"}
     ]
 }
