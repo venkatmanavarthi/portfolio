@@ -15,7 +15,12 @@ function Project(props) {
                         href={props.project.githubUrl} 
                         target="_blank" 
                         rel="noopener noreferrer" 
-                        className="hover:opacity-80 transition-opacity"
+                        className="hover:opacity-80 transition-opacity cursor-pointer"
+                        title="View on GitHub"
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            window.open(props.project.githubUrl, '_blank', 'noopener,noreferrer');
+                        }}
                     >
                         <img 
                             className="w-8 h-8" 
