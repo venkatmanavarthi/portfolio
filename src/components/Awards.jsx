@@ -12,7 +12,7 @@ function Awards() {
             <h1 className="text-center text-3xl font-semibold">Awards & Achievements</h1>
             <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
                 {data.awards.map((award, index) => (
-                    <div key={index} className="bg-white rounded-lg shadow-lg p-6 transform hover:scale-105 transition-transform duration-300">
+                    <div key={index} className="bg-white rounded-lg shadow-lg p-6">
                         <div className="flex flex-col md:flex-row items-center gap-4">
                             {award.image && (
                                 <div className="w-full md:w-1/3 flex justify-center">
@@ -24,9 +24,9 @@ function Awards() {
                                 </div>
                             )}
                             <div className="flex-1 text-center md:text-left">
-                                <h3 className="text-xl font-semibold text-red-500">{award.title}</h3>
+                                <h3 className="text-md font-semibold text-red-500">{award.title}</h3>
                                 <p className="text-gray-600 mt-2">{award.issuer}</p>
-                                <p className="text-gray-500 mt-1">{award.date}</p>
+                                <p className="text-sm text-black mt-1">{award.date}</p>
                                 {award.description && (
                                     <p className="mt-3 text-gray-700">{award.description}</p>
                                 )}
