@@ -65,7 +65,7 @@ function App() {
   };
 
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <Navigation />
       <Routes>
         <Route path="/" element={<Home />} />
