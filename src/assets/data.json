@@ -100,6 +100,13 @@
             "type": "Hobby Project",
             "summary": "Run open-source LLMs on a Raspberry Pi for edge AI applications with lightweight models.",
             "work": [""]
+        },
+        {
+            "title": "5G Testbed",
+            "type": "University of Missouri - Kansas City",
+            "summary": "A comprehensive guide for setting up a 5G testbed using OpenAirInterface 5G Core, RFSIM, USRP B210, and commercial or simulated user equipment.",
+            "work": [""],
+            "githubUrl": "https://github.com/venkatmanavarthi/5g_testbed_tutorial"
         }, 
         {
             "title": "Portfolio Project",
