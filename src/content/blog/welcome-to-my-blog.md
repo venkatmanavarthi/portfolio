@@ -16,6 +16,6 @@ In this blog, you'll find:
 
 ## Stay Connected
 
-Feel free to reach out to me through the contact form on my website or connect with me on social media. I'm always happy to engage in meaningful discussions and learn from others in the community.
+Feel free to reach out to me through my contact on my website or connect with me on social media. I'm always happy to engage in meaningful discussions and learn from others in the community.
 
 Happy reading! 
