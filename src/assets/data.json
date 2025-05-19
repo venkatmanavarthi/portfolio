@@ -138,5 +138,14 @@
         {"school": "Impulse Educational Institution", "level": "", "degree": "", "from": "April 2017", "to": "March 2018"},
         {"school": "Sri Chaitanya Junior College", "level": "", "degree": "", "from": "June 2016", "to": "March 2017"},
         {"school": "SSR School", "level": "", "degree": "", "from": "April 2012", "to": "March 2016"}
+    ],
+    "awards": [
+        {
+            "title": "Ayinala Award for Excellence in Research",
+            "issuer": "University of Missouri - Kansas City",
+            "date": "May 2024",
+            "description": "Recognized for research excellence",
+            "image": "./awards/ayinala_award.jpeg"
+        }
     ]
 }

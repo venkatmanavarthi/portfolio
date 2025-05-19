@@ -102,6 +102,16 @@ function Navigation() {
                                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-500 transition-all duration-300 group-hover:w-full"></span>
                             </a>
                         </li>
+                        <li className="block md:inline-block py-2 md:py-0 px-4 md:px-0 md:ml-6">
+                            <a 
+                                href="#awards" 
+                                onClick={() => setIsMenuOpen(false)}
+                                className="relative group"
+                            >
+                                Awards
+                                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-500 transition-all duration-300 group-hover:w-full"></span>
+                            </a>
+                        </li>
                         {/* <li className="md:inline-block mt-3 md:mt-0 md:ml-6 hover:text-black">
                             <a href="#accomplishment">Accomplishments</a>
                         </li> */}
