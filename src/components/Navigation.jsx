@@ -1,19 +1,33 @@
 import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import logo from '/v_icon.svg';
 
 function Navigation() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const navigate = useNavigate();
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
 
+    const handleSectionClick = (section) => {
+        setIsMenuOpen(false);
+        if (window.location.pathname !== '/') {
+            navigate('/', { state: { scrollTo: section } });
+        } else {
+            const element = document.getElementById(section);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    };
+
     return (
         <nav className="bg-white p-2 border sticky top-0 z-50">
             <div className="container mx-auto flex justify-between items-center">
-                <a href="." className="flex items-center transform hover:scale-105 transition-transform duration-300">
+                <Link to="/" className="flex items-center transform hover:scale-105 transition-transform duration-300">
                     <img src={logo} alt="Venkat Rao Manavarthi" />
-                </a>
+                </Link>
                 
                 {/* Hamburger menu button */}
                 <button 
@@ -53,68 +67,70 @@ function Navigation() {
                 >
                     <ul className="text-md font-medium md:flex md:flex-grow text-red-500">
                         <li className="block md:inline-block py-2 md:py-0 px-4 md:px-0 md:ml-6">
-                            <a 
-                                href="#about" 
-                                onClick={() => setIsMenuOpen(false)}
+                            <button 
+                                onClick={() => handleSectionClick('about')}
                                 className="relative group"
                             >
                                 About Me
                                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-500 transition-all duration-300 group-hover:w-full"></span>
-                            </a>
+                            </button>
                         </li>
                         <li className="block md:inline-block py-2 md:py-0 px-4 md:px-0 md:ml-6">
-                            <a 
-                                href="#experience" 
-                                onClick={() => setIsMenuOpen(false)}
+                            <button 
+                                onClick={() => handleSectionClick('experience')}
                                 className="relative group"
                             >
                                 Experience
                                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-500 transition-all duration-300 group-hover:w-full"></span>
-                            </a>
+                            </button>
                         </li>
                         <li className="block md:inline-block py-2 md:py-0 px-4 md:px-0 md:ml-6">
-                            <a 
-                                href="#projects" 
-                                onClick={() => setIsMenuOpen(false)}
+                            <button 
+                                onClick={() => handleSectionClick('projects')}
                                 className="relative group"
                             >
                                 Projects
                                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-500 transition-all duration-300 group-hover:w-full"></span>
-                            </a>
+                            </button>
                         </li>
                         <li className="block md:inline-block py-2 md:py-0 px-4 md:px-0 md:ml-6">
-                            <a 
-                                href="#skills" 
-                                onClick={() => setIsMenuOpen(false)}
+                            <button 
+                                onClick={() => handleSectionClick('skills')}
                                 className="relative group"
                             >
                                 Skills
                                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-500 transition-all duration-300 group-hover:w-full"></span>
-                            </a>
+                            </button>
                         </li>
                         <li className="block md:inline-block py-2 md:py-0 px-4 md:px-0 md:ml-6">
-                            <a 
-                                href="#education" 
-                                onClick={() => setIsMenuOpen(false)}
-                                className="relative group"
-                            >
-                                Education
-                                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-500 transition-all duration-300 group-hover:w-full"></span>
-                            </a>
-                        </li>
-                        <li className="block md:inline-block py-2 md:py-0 px-4 md:px-0 md:ml-6">
-                            <a 
-                                href="#awards" 
-                                onClick={() => setIsMenuOpen(false)}
+                            <button 
+                                onClick={() => handleSectionClick('awards')}
                                 className="relative group"
                             >
                                 Awards
                                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-500 transition-all duration-300 group-hover:w-full"></span>
-                            </a>
+                            </button>
                         </li>
-                        {/* <li className="md:inline-block mt-3 md:mt-0 md:ml-6 hover:text-black">
-                            <a href="#accomplishment">Accomplishments</a>
-                        </li> */}
+                        <li className="block md:inline-block py-2 md:py-0 px-4 md:px-0 md:ml-6">
+                            <button 
+                                onClick={() => handleSectionClick('education')}
+                                className="relative group"
+                            >
+                                Education
+                                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-500 transition-all duration-300 group-hover:w-full"></span>
+                            </button>
+                        </li>
+
+                        <li className="block md:inline-block py-2 md:py-0 px-4 md:px-0 md:ml-6">
+                            <Link 
+                                to="/blog" 
+                                onClick={() => setIsMenuOpen(false)}
+                                className="relative group"
+                            >
+                                Blog
+                                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-500 transition-all duration-300 group-hover:w-full"></span>
+                            </Link>
+                        </li>
                     </ul>
                 </div>
             </div>
