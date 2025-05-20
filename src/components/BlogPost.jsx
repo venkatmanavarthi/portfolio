@@ -14,6 +14,56 @@ const BlogPost = ({ onLoad }) => {
       try {
         const loadedPost = await onLoad(slug);
         setPost(loadedPost);
+        
+        // Update meta tags for social media preview
+        if (loadedPost) {
+          // Update title
+          document.title = `${loadedPost.title} | Venkat's Blog`;
+          
+          // Update Open Graph tags
+          const metaTags = {
+            'og:title': loadedPost.title,
+            'og:description': loadedPost.description || loadedPost.content.substring(0, 200) + '...',
+            'og:url': `https://venkatmanav.com/blog/${slug}`,
+            'og:type': 'article',
+            'article:published_time': loadedPost.date,
+            'twitter:card': 'summary_large_image',
+            'twitter:title': loadedPost.title,
+            'twitter:description': loadedPost.description || loadedPost.content.substring(0, 200) + '...',
+          };
+
+          // Update or create meta tags
+          Object.entries(metaTags).forEach(([property, content]) => {
+            let metaTag = document.querySelector(`meta[property="${property}"]`) || 
+                         document.querySelector(`meta[name="${property}"]`);
+            
+            if (!metaTag) {
+              metaTag = document.createElement('meta');
+              metaTag.setAttribute(property.startsWith('og:') ? 'property' : 'name', property);
+              document.head.appendChild(metaTag);
+            }
+            metaTag.setAttribute('content', content);
+          });
+
+          // If post has a cover image, add it to meta tags
+          if (loadedPost.coverImage) {
+            const imageUrl = loadedPost.coverImage.startsWith('http') 
+              ? loadedPost.coverImage 
+              : `https://venkatmanav.com${loadedPost.coverImage}`;
+            
+            ['og:image', 'twitter:image'].forEach(property => {
+              let metaTag = document.querySelector(`meta[property="${property}"]`) || 
+                           document.querySelector(`meta[name="${property}"]`);
+              
+              if (!metaTag) {
+                metaTag = document.createElement('meta');
+                metaTag.setAttribute(property.startsWith('og:') ? 'property' : 'name', property);
+                document.head.appendChild(metaTag);
+              }
+              metaTag.setAttribute('content', imageUrl);
+            });
+          }
+        }
       } catch (error) {
         console.error('Error loading post:', error);
       } finally {
@@ -21,6 +71,32 @@ const BlogPost = ({ onLoad }) => {
       }
     };
     loadPost();
+
+    // Cleanup function to reset meta tags when component unmounts
+    return () => {
+      document.title = "Venkat's Portfolio";
+      // Reset meta tags to default values
+      const defaultMetaTags = {
+        'og:title': 'Portfolio',
+        'og:description': 'Portfolio',
+        'og:url': 'https://venkatmanav.com',
+        'og:type': 'website',
+        'og:image': 'https://venkatmanav.com/avatar.png',
+        'twitter:card': 'summary_large_image',
+        'twitter:title': 'Portfolio',
+        'twitter:description': 'Portfolio',
+        'twitter:image': 'https://venkatmanav.com/avatar.png'
+      };
+
+      Object.entries(defaultMetaTags).forEach(([property, content]) => {
+        let metaTag = document.querySelector(`meta[property="${property}"]`) || 
+                     document.querySelector(`meta[name="${property}"]`);
+        
+        if (metaTag) {
+          metaTag.setAttribute('content', content);
+        }
+      });
+    };
   }, [slug, onLoad]);
 
   if (loading) {
