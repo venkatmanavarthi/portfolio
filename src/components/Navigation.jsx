@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import logo from '/v_icon.svg';
+import githubIcon from '../assets/github.svg';
+import linkedinIcon from '../assets/linkedin.svg';
+import emailIcon from '../assets/email.svg';
 
 function Navigation() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -28,7 +31,6 @@ function Navigation() {
                 <Link to="/" className="flex items-center transform hover:scale-105 transition-transform duration-300">
                     <img src={logo} alt="Venkat Rao Manavarthi" />
                 </Link>
-                
                 {/* Hamburger menu button */}
                 <button 
                     className="md:hidden p-2 rounded-lg hover:bg-gray-100 focus:outline-none transition-colors duration-300"
@@ -130,7 +132,6 @@ function Navigation() {
                                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-500 transition-all duration-300 group-hover:w-full"></span>
                             </Link>
                         </li>
-
                         <li className="block md:inline-block py-2 md:py-0 px-4 md:px-0 md:ml-6">
                             <Link 
                                 to="/blog" 
@@ -140,6 +141,24 @@ function Navigation() {
                                 Blog
                                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-500 transition-all duration-300 group-hover:w-full"></span>
                             </Link>
+                        </li>
+                        <li className="block md:inline-block py-2 md:py-0 px-4 md:px-0 md:ml-6">
+                            <a href="https://github.com/venkatmanavarthi" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="flex items-center group">
+                                <img src={githubIcon} alt="GitHub" className="w-6 h-6 mr-1 group-hover:scale-110 transition-transform" />
+                                <span className="sr-only">GitHub</span>
+                            </a>
+                        </li>
+                        <li className="block md:inline-block py-2 md:py-0 px-4 md:px-0 md:ml-2">
+                            <a href="https://www.linkedin.com/in/venkatrao-manavarthi/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="flex items-center group">
+                                <img src={linkedinIcon} alt="LinkedIn" className="w-6 h-6 mr-1 group-hover:scale-110 transition-transform" />
+                                <span className="sr-only">LinkedIn</span>
+                            </a>
+                        </li>
+                        <li className="block md:inline-block py-2 md:py-0 px-4 md:px-0 md:ml-2">
+                            <a href="mailto:manavarthivenkat@icloud.com" aria-label="Email" className="flex items-center group">
+                                <img src={emailIcon} alt="Email" className="w-6 h-6 mr-1 group-hover:scale-110 transition-transform" />
+                                <span className="sr-only">Email</span>
+                            </a>
                         </li>
                     </ul>
                 </div>
