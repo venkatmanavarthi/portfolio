@@ -11,6 +11,7 @@ import BlogList from './components/BlogList';
 import BlogPost from './components/BlogPost';
 import { getAllPosts, getPostBySlug } from './utils/blogUtils';
 import { useState, useEffect } from 'react';
+import Hackathons from './components/Hackathons';
 
 function Home() {
   const location = useLocation();
@@ -71,6 +72,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/blog" element={<BlogList posts={posts} />} />
         <Route path="/blog/:slug" element={<BlogPost onLoad={handlePostLoad} />} />
+        <Route path="/hackathons" element={<Hackathons />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <Footer />
