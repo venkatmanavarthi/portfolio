@@ -48,11 +48,11 @@ function Skills() {
     const skills = data.skills.map((skill, i) => <li className="shadow-2xl hover:shadow p-2 bg-red-400 inline-block rounded mt-1" key={i}>{ skill }</li>)
 
     const getColorClass = (count) => {
-        if (count === 0) return 'bg-[#ebedf0]';
-        if (count <= 3) return 'bg-[#15803d]';
-        if (count <= 6) return 'bg-[#16a34a]';
-        if (count <= 9) return 'bg-[#22c55e]';
-        return 'bg-[#4ade80]';
+        if (count === 0) return isDarkMode ? 'bg-[#1e293b]' : 'bg-[#ebedf0]';
+        if (count <= 3) return 'bg-[#4ade80]';  // Lightest green
+        if (count <= 6) return 'bg-[#22c55e]';  // Light green
+        if (count <= 9) return 'bg-[#16a34a]';  // Medium green
+        return 'bg-[#15803d]';  // Darkest green
     };
 
     // Group contributions by week
@@ -74,13 +74,13 @@ function Skills() {
                     <div>Unable to load GitHub contributions</div>
                 ) : (
                     <>
-                        <div className="flex gap-1">
+                        <div className="flex gap-1 overflow-x-auto max-w-full px-4">
                             {weeks.map((week, weekIndex) => (
                                 <div key={weekIndex} className="flex flex-col gap-1">
                                     {week.map((contribution, dayIndex) => (
                                         <div
                                             key={`${weekIndex}-${dayIndex}`}
-                                            className={`w-3 h-3 rounded-sm ${getColorClass(contribution.count)}`}
+                                            className={`w-2 h-2 sm:w-3 sm:h-3 rounded-sm ${getColorClass(contribution.count)}`}
                                             title={`${contribution.date}: ${contribution.count} contributions`}
                                         />
                                     ))}
