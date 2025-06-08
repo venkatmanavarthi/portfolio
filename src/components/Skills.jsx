@@ -57,7 +57,9 @@ function Skills() {
     };
 
     const formatDate = (dateString) => {
-        const date = new Date(dateString);
+        // Treat date as UTC and add one day to fix off-by-one issue
+        const date = new Date(dateString + 'T00:00:00Z');
+        date.setUTCDate(date.getUTCDate() + 1);
         return date.toLocaleDateString('en-US', { 
             weekday: 'long',
             year: 'numeric',
