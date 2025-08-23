@@ -3,9 +3,9 @@
         "firstname": "Venkat Rao",
         "lastname": "Manavarthi",
         "DOB": "01 January 2001",
-        "p1": "I am Venkat Rao Manavarthi, a passionate software engineer at the National Institute of Standards and Technology. I have a strong foundation in backend technologies, frontend development, big data, cloud computing, and iOS development. I love turning ideas into functional applications.",
+        "p1": "Hi, I’m Venkat Rao Manavarthi—an energetic software engineer specializing in scalable, cloud-native systems, edge AI, and next-generation network management. Currently at the National Institute of Standards and Technology, I bridge research innovation with real-world tech, building everything from quantum networking microservices to robust data infrastructures.",
         "p2": "",
-        "p3": "I invite you to explore my portfolio, here you will find a collection of my professional experience, projects, skills, education and achievements that reflect my dedication to continuous learning and innovation in the tech space. Thank you for visiting, and I look forward to connecting with you!",
+        "p3": "With a strong foundation in backend and frontend engineering, big data, iOS, and cloud, I thrive on architecting solutions for complex problems, rapidly turning ideas into high-impact applications. I’m driven by continuous learning and take pride in translating technical advances into practical products. Let’s connect and collaborate on our next challenge!",
         "pic": "./avatar.png"
     },
     "social": {
@@ -24,10 +24,10 @@
             "location": "🇺🇸",
             "locationTitle": "Washington DC, United States",
             "work": [
-                "Designing and developing quatum network manager microservices in go.",
-                "Developed scripts to automate testing and data collection scenarios on 5g testbed.",
-                "Developing QNM gui using go/fyne for desktop.",
-                "Implemented go-gorm ORM to optimize data fetching, manipulation, and database interactions, resulting in improved efficiency and performance."
+                "Lead design and development of quantum network manager microservices in Go, architecting secure, scalable networking modules.",
+                "Automated end-to-end 5G testbed testing and data-collection via custom scripting, significantly accelerating research cycles.",
+                "Engineered desktop GUI for QNM using Go/Fyne, enhancing usability for telecom researchers.",
+                "Leveraged Go-GORM ORM for data-intensive operations, boosting system efficiency and reducing latency."
             ]
         },
         {
@@ -39,10 +39,10 @@
             "location": "🇺🇸",
             "locationTitle": "Missouri, United States",
             "work": [
-                "Led testbed cloud deployments for research.",
-                "Developed scripts to deploy simple 5g testbed on Google Cloud which reduced setup time by 80%.",
-                "Designed and implemented RESTful APIs using Java Spring Boot, ensuring robust, scalable, and efficient back-end services."
-        ]
+                "Spearheaded cloud-based research testbed deployments—cut setup time by 80% with automation across Google Cloud.",
+                "Designed RESTful APIs (Java Spring Boot), delivering reliable, scalable back-end architecture.",
+                "Mentored student teams and collaborated with cross-disciplinary researchers."
+            ]
         },
         {
             "company": "Nagarro",
@@ -53,9 +53,9 @@
             "location": "🇮🇳",
             "locationTitle": "India",
             "work": [
-                "Created ETL (Extract Transform Load)/ ELT (Extract Load Transform) pipelines.",
-                "Migrated hadoop jobs to spark reducing processing time by 50%.",
-                "Reduced cloud storage cost by 25% converting large csv files into more storage optimized parquet file format."
+                "Developed high-performance ETL/ELT data pipelines for enterprise analytics.",
+                "Migrated legacy Hadoop jobs to Spark—halved data processing time and increased reliability.",
+                "Cut cloud storage costs by 25% via advanced file format optimization (CSV → Parquet)."
             ]
         },
         {
@@ -67,9 +67,9 @@
             "location": "🇮🇳",
             "locationTitle": "India",
             "work": [
-                "Restructured codebase by eliminating unnecessary code and adopting best design patterns, resulting in reduced bundle size and improved application launch rates.",
-                "Transformed a cluttered interface into a streamlined design, resulting in a 25% increase in user engagement and time spent on the platform.",
-                "Deployed APIs to AWS Lambda, leveraging API Gateway to manage and secure endpoints, improving scalability and reducing operational overhead."
+                "Restructured legacy codebase using best design patterns—reduced app size, improved launch rates.",
+                "Led UI transformation, increasing user engagement by 25%.",
+                "Deployed scalable APIs on AWS Lambda via API Gateway."
             ]
         },
         {
@@ -81,9 +81,10 @@
             "location": "🇮🇳",
             "locationTitle": "India",
             "work": [
-                "Designed and implemented RESTful APIs using the FastAPI framework to ensure faster release cycle.",
-                "Developed a attendance management iOS app utilizing geo-referencing and facial recognition technologies to enhance accuracy and security in attendance tracking.",
-                "Employed Core ML to extract key portions of images for efficient transmission to the server for face recognition."
+                "Built RESTful APIs with FastAPI for rapid, robust releases.",
+                "Designed secure, geo-referenced iOS attendance app with Core ML and facial recognition.",
+                "Streamlined image transmission for efficient server-side processing."
+
             ]
         }
     ],
