@@ -1,0 +1,22 @@
+{{ define "main" }}
+<section>
+  <h1>{{ .Title }}</h1>
+  
+  <ul class="list">
+    {{ range .Pages }}
+      <li>
+        <div class="item-title">
+          <a href="{{ .Permalink }}">{{ .Title }}</a>
+        </div>
+        <div class="item-meta">
+          {{ .Date.Format "January 2, 2006" }}
+          {{ with .Params.tags }} · {{ delimit . ", " }}{{ end }}
+        </div>
+        <p class="item-desc">
+          {{ with .Params.description }}{{ . }}{{ else }}{{ .Summary }}{{ end }}
+        </p>
+      </li>
+    {{ end }}
+  </ul>
+</section>
+{{ end }}
