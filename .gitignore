@@ -1,0 +1,28 @@
+# Hugo build output
+/public/
+/resources/_gen/
+/hugo_cache/
+/hugo_stats.json
+
+# OS & Editor junk
+.DS_Store
+Thumbs.db
+
+# Node modules (if using themes with JS)
+node_modules/
+
+# Logs
+*.log
+
+# Build artifacts
+*.bak
+*.tmp
+*.swp
+
+# IDE settings
+.vscode/
+.idea/
+
+# Deployment or build tools
+.deploy*/
+.cache/
