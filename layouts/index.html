@@ -107,6 +107,22 @@
         Location: {{ .Site.Params.location }}
       </p>
     </section>
+
+    <section id="recent-posts">
+      <h2>Recent Posts</h2>
+      <ul class="list">
+        {{ range first 3 (sort (where .Site.RegularPages "Section" "blog") "Date" "desc") }}
+          <li>
+            <div class="item-title">
+              <a href="{{ .Permalink }}">{{ .Title }}</a>
+            </div>
+            <div class="item-meta">
+              {{ .Date.Format "Jan 02, 2006" }}
+            </div>
+          </li>
+        {{ end }}
+      </ul>
+    </section>
   </div>
 </main>
 {{ end }}
