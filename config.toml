@@ -1,0 +1,12 @@
+baseURL = 'https://venkatmanav.com/'
+languageCode = 'en-us'
+title = 'Venkat Portfolio'
+
+[params]
+  author = "Venkat Manavarthi"
+  description = "Software Engineer"
+  email = "venkat@venkatmanav.com"
+  location = "United States"
+  linkedin = "venkatrao-manavarthi/"
+  lastUpdated = "2025"
+  github = "venkatmanavarthi"

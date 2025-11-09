@@ -1,0 +1,91 @@
+{{ define "main" }}
+<main>
+  <!-- Left column -->
+  <div>
+    <section id="projects">
+      <h2>Projects</h2>
+      <ul class="list">
+        {{ range sort (where .Site.RegularPages "Section" "projects") "Date" "desc" }}
+          <li>
+            <div class="item-title">
+              {{ if .Params.link }}
+                <a href="{{ .Params.link }}" target="_blank" rel="noopener">{{ .Title }}</a>
+              {{ else }}
+                {{ .Title }}
+              {{ end }}
+            </div>
+            <div class="item-meta">
+              {{ .Date.Format "2006" }}
+              {{ with .Params.tech }} · {{ delimit . ", " }}{{ end }}
+            </div>
+            <p class="item-desc">
+              {{ .Summary }}
+            </p>
+          </li>
+        {{ end }}
+      </ul>
+    </section>
+
+    <section id="experience">
+      <h2>Experience</h2>
+      <ul class="list">
+        {{ range sort (where .Site.RegularPages "Section" "experience") "Date" "desc" }}
+          <li>
+            <div class="item-title">{{ .Title }}</div>
+            <div class="item-meta">
+              {{ .Date.Format "2006" }}
+              {{ with .Params.location }} · {{ . }}{{ end }}
+              {{ with .Params.tech }} · {{ delimit . ", " }}{{ end }}
+            </div>
+            <p class="item-desc">
+              {{ .Summary }}
+            </p>
+          </li>
+        {{ end }}
+      </ul>
+    </section>
+
+  </div>
+
+  <!-- Right column -->
+  <div>
+    <section id="about">
+      <h2>About</h2>
+      <p>
+        {{ .Content }}
+      </p>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      {{ range sort (where .Site.RegularPages "Section" "skills") "Params.weight" "asc" }}
+        <h3>{{ .Title }}</h3>
+        <div>
+          {{ range .Params.skills }}
+            <span class="pill">{{ . }}</span>
+          {{ end }}
+        </div>
+        <p class="item-desc">{{ .Content }}</p>
+      {{ end }}
+    </section>
+
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>
+        Email:
+        <a href="mailto:{{ .Site.Params.email }}">{{ .Site.Params.email }}</a><br>
+        GitHub:
+        <a href="https://github.com/{{ .Site.Params.github }}" target="_blank" rel="noopener">
+          @{{ .Site.Params.github }}
+        </a><br>
+        LinkedIn:
+        <a href="https://www.linkedin.com/in/{{ .Site.Params.linkedin }}" target="_blank" rel="noopener">
+          linkedin.com/in/{{ .Site.Params.linkedin }}
+        </a><br>
+        Location: {{ .Site.Params.location }}
+      </p>
+    </section>
+  </div>
+</main>
+{{ end }}
