@@ -31,11 +31,31 @@
       <ul class="list">
         {{ range sort (where .Site.RegularPages "Section" "experience") "Date" "desc" }}
           <li>
-            <div class="item-title">{{ .Title }}</div>
+            <div class="item-title">{{ .Params.role }}</div>
+            <div class="item-subtitle">{{ .Params.company }}</div>
             <div class="item-meta">
-              {{ .Date.Format "2006" }}
+              {{ .Date.Format "Jan 2006" }}{{ if .Params.endDate }} - {{ (time .Params.endDate).Format "Jan 2006" }}{{ else }} - Present{{ end }}
               {{ with .Params.location }} · {{ . }}{{ end }}
               {{ with .Params.tech }} · {{ delimit . ", " }}{{ end }}
+            </div>
+            <p class="item-desc">
+              {{ .Summary }}
+            </p>
+          </li>
+        {{ end }}
+      </ul>
+    </section>
+
+    <section id="education">
+      <h2>Education</h2>
+      <ul class="list">
+        {{ range sort (where .Site.RegularPages "Section" "education") "Date" "desc" }}
+          <li>
+            <div class="item-title">{{ .Params.degree }} in {{ .Params.field }}</div>
+            <div class="item-subtitle">{{ .Params.institution }}</div>
+            <div class="item-meta">
+              {{ .Date.Format "Jan 2006" }}{{ if .Params.endDate }} - {{ (time .Params.endDate).Format "Jan 2006" }}{{ else }} - Present{{ end }}
+              {{ with .Params.location }} · {{ . }}{{ end }}
             </div>
             <p class="item-desc">
               {{ .Summary }}
