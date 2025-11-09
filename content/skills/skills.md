@@ -1,4 +1,4 @@
 ---
-skills: ["Python", "Go(golang)", "Rust", "Machine Learning", "Deep Learning", "LLMs", "LangChain", "PyTorch"]
-weight: 2
+skills: ["Python", "Go", "Rust", "Java", "LLMs", "LangChain", "GenAI", "AWS", "GCP"]
+weight: 1
 ---
