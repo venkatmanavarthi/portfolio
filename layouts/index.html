@@ -73,6 +73,31 @@
       </ul>
     </section>
 
+    <section id="certifications">
+      <h2>Certifications</h2>
+      <ul class="list">
+        {{ range sort (where .Site.RegularPages "Section" "certifications") "Date" "desc" }}
+          <li>
+            <div class="item-title">
+              {{ if .Params.credentialUrl }}
+                <a href="{{ .Params.credentialUrl }}" target="_blank" rel="noopener">{{ .Title }}</a>
+              {{ else }}
+                {{ .Title }}
+              {{ end }}
+            </div>
+            <div class="item-subtitle">{{ .Params.issuer }}</div>
+            <div class="item-meta">
+              {{ .Date.Format "Jan 2006" }}
+              {{ with .Params.credentialId }} · ID: {{ . }}{{ end }}
+            </div>
+            <p class="item-desc">
+              {{ .Summary }}
+            </p>
+          </li>
+        {{ end }}
+      </ul>
+    </section>
+
   </div>
 
   <!-- Right column -->

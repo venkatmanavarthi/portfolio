@@ -26,3 +26,4 @@ node_modules/
 # Deployment or build tools
 .deploy*/
 .cache/
+content/certifications/sample-certification.md
