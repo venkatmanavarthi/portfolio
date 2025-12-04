@@ -87,7 +87,7 @@
             </div>
             <div class="item-subtitle">{{ .Params.issuer }}</div>
             <div class="item-meta">
-              {{ .Date.Format "Jan 2006" }}
+              {{ .Date.Format "Jan 2006" }}{{ if .Params.endDate }} - {{ (time .Params.endDate).Format "Jan 2006" }}{{ else }} - Present{{ end }}
               {{ with .Params.credentialId }} · ID: {{ . }}{{ end }}
             </div>
             <p class="item-desc">
