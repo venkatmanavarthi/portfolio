@@ -1,0 +1,26 @@
+{{ define "main" }}
+<article>
+  <header style="margin-bottom: 2rem;">
+    <h1 style="margin: 0 0 0.5rem;">{{ .Title }}</h1>
+    <div style="color: var(--muted); font-size: 0.9rem;">
+      {{ with .Params.author }}By {{ . }} · {{ end }}
+      {{ with .Params.rating }}Rating: {{ . }}/5 · {{ end }}
+      {{ .Date.Format "January 2, 2006" }}
+    </div>
+  </header>
+
+  {{ if .Params.cover }}
+  <div style="margin-bottom: 2rem;">
+    <img src="{{ .Params.cover }}" alt="{{ .Title }}" style="max-width: 200px; height: auto; border-radius: 8px; border: 1px solid var(--border); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
+  </div>
+  {{ end }}
+  
+  <div class="content">
+    {{ .Content }}
+  </div>
+  
+  <div style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border);">
+    <a href="/books">← Back to Bookshelf</a>
+  </div>
+</article>
+{{ end }}

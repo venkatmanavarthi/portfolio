@@ -1,0 +1,30 @@
+{{ define "main" }}
+<section>
+  <h1>{{ .Title }}</h1>
+  
+  <ul class="list">
+    {{ range .Pages }}
+      <li style="display: flex; gap: 16px; align-items: start;">
+        {{ if .Params.cover }}
+          <a href="{{ .Permalink }}" style="flex-shrink: 0;">
+            <img src="{{ .Params.cover }}" alt="{{ .Title }}" style="width: 80px; height: auto; border-radius: 4px; border: 1px solid var(--border); display: block;">
+          </a>
+        {{ end }}
+        <div>
+          <div class="item-title">
+            <a href="{{ .Permalink }}">{{ .Title }}</a>
+          </div>
+          <div class="item-meta">
+            {{ with .Params.author }}By {{ . }} · {{ end }}
+            {{ with .Params.rating }}Rating: {{ . }}/5 · {{ end }}
+            {{ .Date.Format "January 2, 2006" }}
+          </div>
+          <p class="item-desc">
+            {{ with .Params.description }}{{ . }}{{ else }}{{ .Summary }}{{ end }}
+          </p>
+        </div>
+      </li>
+    {{ end }}
+  </ul>
+</section>
+{{ end }}
