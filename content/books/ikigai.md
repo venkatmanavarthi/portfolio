@@ -6,4 +6,5 @@ rating: 5
 cover: "/images/ikigai.jpg"
 ---
 
-I never belived in therapy but this reading book really helped me. Hope it does something good to you too. 
+I never belived in therapy but reading this book really helped me. Hope it does something good to you too. 
+Probably the only book i read after my high school 😂.
