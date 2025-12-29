@@ -1,0 +1,142 @@
+{{ define "main" }}
+<style>
+  .timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px 0;
+  }
+  
+  /* The vertical line */
+  .timeline::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background-color: var(--border);
+    top: 0;
+    bottom: 0;
+    left: 20px;
+    margin-left: -1px;
+  }
+
+  .timeline-item {
+    padding: 10px 10px 10px 40px;
+    position: relative;
+    background-color: inherit;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* The circles on the timeline */
+  .timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    right: auto;
+    background-color: var(--bg);
+    border: 2px solid var(--accent);
+    top: 24px;
+    border-radius: 50%;
+    z-index: 1;
+    left: 15px;
+  }
+
+  .timeline-content {
+    padding: 20px;
+    background-color: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    position: relative;
+  }
+
+  .timeline-date {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 8px;
+    display: block;
+    font-weight: bold;
+  }
+
+  .timeline-images {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+
+  .timeline-images img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    max-height: 200px;
+    object-fit: cover;
+    border: 1px solid var(--border);
+  }
+  
+  @media (min-width: 768px) {
+      .timeline::after {
+        left: 50%;
+      }
+      
+      .timeline-item {
+        width: 50%;
+        padding-left: 40px;
+        padding-right: 40px;
+      }
+      
+      .timeline-item:nth-child(odd) {
+        left: 0;
+        text-align: right;
+        padding-left: 0;
+        padding-right: 40px;
+      }
+      
+      .timeline-item:nth-child(even) {
+        left: 50%;
+        text-align: left;
+        padding-left: 40px;
+        padding-right: 0;
+      }
+
+      .timeline-item:nth-child(odd)::after {
+        left: auto;
+        right: -6px;
+      }
+      
+      .timeline-item:nth-child(even)::after {
+        left: -6px;
+      }
+
+      .timeline-images {
+        justify-content: flex-end;
+      }
+      
+      .timeline-item:nth-child(even) .timeline-images {
+        justify-content: flex-start;
+      }
+  }
+</style>
+
+<section>
+  <h1>{{ .Title }}</h1>
+  <div class="timeline">
+    {{ range .Pages }}
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <span class="timeline-date">{{ .Date.Format "January 2, 2006" }}</span>
+          <h3>{{ .Title }}</h3>
+          <div>{{ .Content }}</div>
+          {{ if .Params.images }}
+            <div class="timeline-images">
+              {{ range .Params.images }}
+                <img src="{{ . | absURL }}" alt="Image">
+              {{ end }}
+            </div>
+          {{ end }}
+        </div>
+      </div>
+    {{ end }}
+  </div>
+</section>
+{{ end }}
