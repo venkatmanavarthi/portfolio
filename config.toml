@@ -1,6 +1,7 @@
 baseURL = 'https://venkatmanav.com/'
 languageCode = 'en-us'
 title = 'Venkat Portfolio'
+enableRobotsTXT = true
 
 [params]
   author = "Venkat Manavarthi"
