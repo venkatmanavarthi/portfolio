@@ -116,6 +116,29 @@
     </section>
 
 
+    <section id="countdown">
+      <h2>Countdown</h2>
+      <p style="font-size:0.9rem;color:var(--muted);margin-bottom:8px;">Time left until May 31, 2027</p>
+      <div id="countdown-timer" style="display:flex;gap:12px;flex-wrap:wrap;">
+        <div style="text-align:center;">
+          <span id="cd-days" style="font-size:2rem;font-weight:700;color:var(--accent);">--</span>
+          <div style="font-size:0.75rem;color:var(--muted);">days</div>
+        </div>
+        <div style="text-align:center;">
+          <span id="cd-hours" style="font-size:2rem;font-weight:700;color:var(--accent);">--</span>
+          <div style="font-size:0.75rem;color:var(--muted);">hours</div>
+        </div>
+        <div style="text-align:center;">
+          <span id="cd-minutes" style="font-size:2rem;font-weight:700;color:var(--accent);">--</span>
+          <div style="font-size:0.75rem;color:var(--muted);">min</div>
+        </div>
+        <div style="text-align:center;">
+          <span id="cd-seconds" style="font-size:2rem;font-weight:700;color:var(--accent);">--</span>
+          <div style="font-size:0.75rem;color:var(--muted);">sec</div>
+        </div>
+      </div>
+    </section>
+
     <section id="contact">
       <h2>Contact</h2>
       <p>
@@ -150,4 +173,31 @@
     </section>
   </div>
 </main>
+
+<script>
+  (function () {
+    var target = new Date('2027-05-31T00:00:00').getTime();
+    function tick() {
+      var now = Date.now();
+      var diff = target - now;
+      if (diff <= 0) {
+        document.getElementById('cd-days').textContent = '0';
+        document.getElementById('cd-hours').textContent = '0';
+        document.getElementById('cd-minutes').textContent = '0';
+        document.getElementById('cd-seconds').textContent = '0';
+        return;
+      }
+      var d = Math.floor(diff / 86400000);
+      var h = Math.floor((diff % 86400000) / 3600000);
+      var m = Math.floor((diff % 3600000) / 60000);
+      var s = Math.floor((diff % 60000) / 1000);
+      document.getElementById('cd-days').textContent = d;
+      document.getElementById('cd-hours').textContent = String(h).padStart(2, '0');
+      document.getElementById('cd-minutes').textContent = String(m).padStart(2, '0');
+      document.getElementById('cd-seconds').textContent = String(s).padStart(2, '0');
+    }
+    tick();
+    setInterval(tick, 1000);
+  })();
+</script>
 {{ end }}
