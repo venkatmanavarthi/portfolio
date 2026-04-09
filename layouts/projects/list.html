@@ -1,0 +1,27 @@
+{{ define "main" }}
+<section>
+  <h1>{{ .Title }}</h1>
+
+  <ul class="list">
+    {{ range sort .Pages "Date" "desc" }}
+      <li>
+        <div class="item-title">
+          {{ if .Params.link }}
+            <a href="{{ .Params.link }}" target="_blank" rel="noopener">{{ .Title }}</a>
+          {{ else }}
+            <a href="{{ .Permalink }}">{{ .Title }}</a>
+          {{ end }}
+        </div>
+        <div class="item-meta">
+          {{ .Date.Format "2006" }}
+          {{ with .Params.tech }} · {{ delimit . ", " }}{{ end }}
+          {{ with .Params.tags }} · {{ delimit . ", " }}{{ end }}
+        </div>
+        <p class="item-desc">
+          {{ with .Params.description }}{{ . }}{{ else }}{{ .Summary }}{{ end }}
+        </p>
+      </li>
+    {{ end }}
+  </ul>
+</section>
+{{ end }}
