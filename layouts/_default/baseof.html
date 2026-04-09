@@ -77,10 +77,10 @@
       margin-bottom: 24px;
       padding-bottom: 16px;
       display: flex;
-      flex-wrap: wrap;
-      gap: 8px 24px;
-      justify-content: space-between;
-      align-items: baseline;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      text-align: center;
     }
 
     .name {
@@ -96,6 +96,10 @@
 
     nav {
       font-size: 0.9rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 4px;
     }
 
     nav a {
@@ -248,7 +252,6 @@
         <a href="/#certifications">Certifications</a>
         <!-- <a href="/books">Books</a> -->
         <!-- <a href="/tools">Finance Tools</a> -->
-        <a href="/2026" class="nav-highlight">2026</a>
         <a href="/#about">About</a>
         <a href="/#contact">Contact</a>
         <button id="theme-toggle" aria-label="Toggle Dark Mode">

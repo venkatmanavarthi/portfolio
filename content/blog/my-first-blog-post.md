@@ -1,7 +1,7 @@
 ---
 title: "My First Blog Post"
 date: 2025-11-09
-draft: false
+draft: true
 tags: ["welcome", "introduction"]
 description: "Welcome to my blog! This is my first post where I share my thoughts and experiences."
 ---
