@@ -10,33 +10,6 @@
 <main>
   <!-- Left column -->
   <div>
-    <section id="projects">
-      <h2>Projects</h2>
-      <ul class="list">
-        {{ range first 5 (sort (where .Site.RegularPages "Section" "projects") "Date" "desc") }}
-          <li>
-            <div class="item-title">
-              {{ if .Params.link }}
-                <a href="{{ .Params.link }}" target="_blank" rel="noopener">{{ .Title }}</a>
-              {{ else }}
-                <a href="{{ .Permalink }}">{{ .Title }}</a>
-              {{ end }}
-            </div>
-            <div class="item-meta">
-              {{ .Date.Format "2006" }}
-              {{ with .Params.tech }} · {{ delimit . ", " }}{{ end }}
-            </div>
-            <p class="item-desc">
-              {{ .Summary }}
-            </p>
-          </li>
-        {{ end }}
-      </ul>
-      {{ if gt (len (where .Site.RegularPages "Section" "projects")) 5 }}
-        <p><a href="/projects">See all projects →</a></p>
-      {{ end }}
-    </section>
-
     <section id="experience">
       <h2>Experience</h2>
       <ul class="list">
