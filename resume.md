@@ -1,7 +1,7 @@
 # Venkat Rao Manavarthi
 **Software Engineer**  
 manavarthivenkat@icloud.com | +1 816-577-0765  
-linkedin.com/in/venkatrao-manavarthi | github.com/venkatmanavarthi | venkatmanav.com | DC, United States  
+[linkedin.com/in/venkatrao-manavarthi](https://linkedin.com/in/venkatrao-manavarthi) | [github.com/venkatmanavarthi](https://github.com/venkatmanavarthi) | [venkatmanav.com](https://venkatmanav.com) | DC, United States  
 
 ---
 
