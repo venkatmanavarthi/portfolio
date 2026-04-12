@@ -120,6 +120,24 @@
       opacity: 0.9;
     }
 
+    .button-link {
+      display: inline-block;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: var(--bg);
+      color: var(--text);
+      padding: 8px 12px;
+      font-size: 0.9rem;
+      line-height: 1;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .button-link:hover, .button-link:focus {
+      text-decoration: none;
+      border-color: var(--accent);
+    }
+
     #theme-toggle {
       background: none;
       border: none;
@@ -247,6 +265,7 @@
         <a href="/">Home</a>
         <a href="/blog">Blog</a>
         <a href="/projects">Projects</a>
+        <a href="/resume/">Resume</a>
         <a href="/#experience">Experience</a>
         <a href="/#education">Education</a>
         <a href="/#certifications">Certifications</a>

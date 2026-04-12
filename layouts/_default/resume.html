@@ -1,0 +1,38 @@
+{{ define "main" }}
+{{ $resumeMarkdown := readFile "resume.md" }}
+
+<section>
+  <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 16px;">
+    <h1 style="margin: 0;">Resume</h1>
+    <button id="resume-download" type="button" class="button-link">Download Resume</button>
+  </div>
+
+  <article class="content">
+    {{ $resumeMarkdown | markdownify }}
+  </article>
+
+  <div style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border);">
+    <a href="/">← Back to Home</a>
+  </div>
+</section>
+
+<script>
+  (() => {
+    const button = document.getElementById('resume-download');
+    if (!button) return;
+
+    const resumeContent = {{ $resumeMarkdown | jsonify }};
+    button.addEventListener('click', () => {
+      const blob = new Blob([resumeContent], { type: 'text/markdown;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'resume.md';
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(url);
+    });
+  })();
+</script>
+{{ end }}
