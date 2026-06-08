@@ -1,13 +1,16 @@
 baseURL = 'https://venkatmanav.com/'
 languageCode = 'en-us'
-title = 'Venkat Portfolio'
+title = 'Venkat Manavarthi'
 enableRobotsTXT = true
 
 [params]
+  name = "Venkat Manavarthi"
+  fullName = "Venkat Rao Manavarthi"
+  tagline = "Software Engineer"
   author = "Venkat Manavarthi"
-  description = "Software Engineer"
-  email = "manavarthivenkat@icloud.com"
-  location = "United States"
+  description = "Software Engineer specializing in low-latency infrastructure and AI tooling."
+  email = "venkatraomanavarthi@gmail.com"
+  location = "DC, United States"
   linkedin = "venkatrao-manavarthi/"
   lastUpdated = "2026"
   github = "venkatmanavarthi"

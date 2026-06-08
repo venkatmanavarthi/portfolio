@@ -1,5 +1,5 @@
 ---
-title: "Venkat's Protfolio"
+title: "Venkat Manavarthi"
 ---
 
-Hi, I'm **Venkat Rao Manavarthi** – a software engineer focused on low-latency infra, and AI tooling. I like building fast, and products that actually ship.
+Software engineer with 4+ years building backend systems and distributed infrastructure. Currently working on low-latency Go microservices, gRPC APIs, and Kubernetes deployments. Into AI tooling, systems performance, and things that actually ship.

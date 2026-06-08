@@ -7,7 +7,6 @@
   <meta name="description" content="{{ if .Params.description }}{{ .Params.description }}{{ else if .Summary }}{{ .Summary }}{{ else }}{{ .Site.Params.description }}{{ end }}">
   <meta name="author" content="{{ .Site.Params.author }}">
 
-  <!-- Open Graph / Facebook -->
   <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
   <meta property="og:url" content="{{ .Permalink }}">
   <meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
@@ -17,264 +16,298 @@
   <meta property="og:image" content="{{ .Params.image | absURL }}">
   {{ end }}
 
-  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="{{ .Permalink }}">
-  <meta name="twitter:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
-  <meta name="twitter:description" content="{{ if .Params.description }}{{ .Params.description }}{{ else if .Summary }}{{ .Summary }}{{ else }}{{ .Site.Params.description }}{{ end }}">
-  {{ if .Params.image }}
-  <meta name="twitter:image" content="{{ .Params.image | absURL }}">
-  {{ end }}
-
-  <!-- Canonical URL -->
   <link rel="canonical" href="{{ .Permalink }}">
 
   <style>
     :root {
-      --bg: #fdfdfd;
-      --text: #111;
-      --accent: #0055ff;
-      --muted: #777;
-      --border: #ddd;
-      --max-width: 760px;
+      --bg: #fafaf9;
+      --surface: #f5f5f4;
+      --text: #18181b;
+      --text-2: #52525b;
+      --muted: #a1a1aa;
+      --accent: #2563eb;
+      --accent-dim: rgba(37, 99, 235, 0.07);
+      --border: #e4e4e7;
+      --max-width: 820px;
     }
 
     .dark {
-      --bg: #1a1a1a;
-      --text: #eee;
-      --accent: #66aaff;
-      --muted: #aaa;
-      --border: #444;
+      --bg: #18181b;
+      --surface: #27272a;
+      --text: #fafafa;
+      --text-2: #a1a1aa;
+      --muted: #71717a;
+      --accent: #60a5fa;
+      --accent-dim: rgba(96, 165, 250, 0.1);
+      --border: #3f3f46;
     }
 
     * { box-sizing: border-box; }
 
     body {
       margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.5;
+      line-height: 1.6;
+      font-size: 15px;
+      -webkit-font-smoothing: antialiased;
     }
 
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    a:hover, a:focus {
-      text-decoration: underline;
-    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover, a:focus { text-decoration: underline; }
 
     .page {
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: 24px 16px 40px;
+      padding: 28px 20px 48px;
     }
 
-    header {
-      border-bottom: 1px solid var(--border);
-      margin-bottom: 24px;
-      padding-bottom: 16px;
+    /* ── Site header ── */
+    .site-header {
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 12px;
-      text-align: center;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 36px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+      flex-wrap: wrap;
     }
 
-    .name {
-      font-size: 1.5rem;
-      font-weight: 600;
-    }
+    .header-brand { display: flex; flex-direction: column; gap: 2px; }
 
-    .tagline {
-      font-size: 0.95rem;
-      color: var(--muted);
-      max-width: 420px;
+    .site-name {
+      font-size: 0.9875rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.01em;
     }
+    .site-name:hover { text-decoration: none; color: var(--accent); }
+
+    .site-role { font-size: 0.8125rem; color: var(--muted); }
 
     nav {
-      font-size: 0.9rem;
       display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 0.875rem;
       flex-wrap: wrap;
-      justify-content: center;
-      gap: 4px;
     }
 
-    nav a {
-      margin-left: 12px;
-      white-space: nowrap;
+    nav a { color: var(--text-2); }
+    nav a:hover { color: var(--accent); text-decoration: none; }
+    .nav-resume { color: var(--accent) !important; font-weight: 500; }
+
+    #theme-toggle {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 2px;
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      line-height: 1;
+    }
+    #theme-toggle:hover { color: var(--text); }
+
+    .theme-icon { width: 16px; height: 16px; }
+    .theme-icon-sun { display: none; }
+    .dark .theme-icon-moon { display: none; }
+    .dark .theme-icon-sun { display: block; }
+
+    /* ── Two-column layout ── */
+    main {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
     }
 
-    .nav-highlight {
-      background-color: var(--accent);
-      color: white !important;
-      padding: 4px 8px;
+    @media (min-width: 680px) {
+      main {
+        grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+        align-items: flex-start;
+        column-gap: 48px;
+      }
+    }
+
+    section { margin-bottom: 32px; }
+
+    /* ── Section headings ── */
+    h2 {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin: 0 0 14px;
+      padding-left: 8px;
+      border-left: 2px solid var(--accent);
+    }
+
+    h3 {
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin: 12px 0 4px;
+      color: var(--text-2);
+    }
+
+    /* ── Page title (list/single pages) ── */
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 0 0 20px;
+      color: var(--text);
+    }
+
+    p { margin: 0 0 8px; font-size: 0.9375rem; }
+
+    /* ── Skills pills ── */
+    .pill {
+      display: inline-block;
+      background: var(--accent-dim);
+      border: 1px solid var(--border);
       border-radius: 4px;
-      text-decoration: none !important;
-      font-weight: bold;
+      padding: 2px 8px;
+      font-size: 0.775rem;
+      margin: 0 4px 6px 0;
+      color: var(--text-2);
+      font-weight: 500;
     }
 
-    .nav-highlight:hover {
-      opacity: 0.9;
+    .skills-group { margin-bottom: 8px; line-height: 2; }
+
+    /* ── List items ── */
+    .list { list-style: none; padding: 0; margin: 0; }
+
+    .list > li {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .list > li:last-child { border-bottom: none; }
+
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 8px;
     }
 
+    .item-title { font-weight: 600; font-size: 0.9375rem; color: var(--text); }
+    .item-subtitle { font-size: 0.875rem; color: var(--text-2); margin-top: 1px; }
+
+    .item-date {
+      font-size: 0.775rem;
+      color: var(--muted);
+      white-space: nowrap;
+      padding-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .item-meta { font-size: 0.8rem; color: var(--muted); margin-top: 3px; line-height: 1.4; }
+
+    .item-desc { margin-top: 8px; font-size: 0.875rem; color: var(--text-2); }
+    .item-desc p { font-size: 0.875rem; color: var(--text-2); margin: 0 0 4px; }
+    .item-desc ul { margin: 0; padding-left: 16px; }
+    .item-desc li { margin-bottom: 4px; font-size: 0.875rem; color: var(--text-2); }
+
+    /* ── Button ── */
     .button-link {
       display: inline-block;
       border: 1px solid var(--border);
       border-radius: 6px;
       background: var(--bg);
       color: var(--text);
-      padding: 8px 12px;
-      font-size: 0.9rem;
-      line-height: 1;
+      padding: 6px 12px;
+      font-size: 0.875rem;
       cursor: pointer;
       text-decoration: none;
     }
+    .button-link:hover { text-decoration: none; border-color: var(--accent); }
 
-    .button-link:hover, .button-link:focus {
-      text-decoration: none;
-      border-color: var(--accent);
+    /* ── Hero (home page) ── */
+    .hero {
+      margin-bottom: 40px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--border);
     }
 
-    #theme-toggle {
-      background: none;
-      border: none;
-      cursor: pointer;
-      margin-left: 12px;
-      padding: 0;
-      vertical-align: middle;
+    .hero-name {
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin: 0 0 4px;
       color: var(--text);
-      display: inline-flex;
-      align-items: center;
+      line-height: 1.2;
     }
 
-    .theme-icon {
-      width: 20px;
-      height: 20px;
-    }
+    .hero-role { font-size: 0.9375rem; color: var(--text-2); margin: 0 0 14px; }
 
-    .theme-icon-sun {
-      display: none;
-    }
+    .hero-bio { max-width: 560px; margin-bottom: 18px; }
+    .hero-bio p { font-size: 0.9375rem; color: var(--text-2); margin: 0; line-height: 1.65; }
 
-    .dark .theme-icon-moon {
-      display: none;
-    }
+    .hero-links { display: flex; flex-wrap: wrap; gap: 10px; }
 
-    .dark .theme-icon-sun {
-      display: block;
-    }
-
-    main {
-      display: grid;
-      grid-template-columns: minmax(0, 2fr);
-      gap: 32px;
-    }
-
-    section {
-      margin-bottom: 16px;
-    }
-
-    h2 {
-      font-size: 1.05rem;
-      margin: 0 0 6px;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--muted);
-    }
-
-    p {
-      margin: 0 0 8px;
-      font-size: 0.96rem;
-    }
-
-    .pill {
-      display: inline-block;
+    .hero-link {
+      font-size: 0.8125rem;
+      color: var(--text-2);
       border: 1px solid var(--border);
-      border-radius: 999px;
-      padding: 2px 8px;
-      font-size: 0.8rem;
-      margin: 0 6px 6px 0;
-      color: var(--muted);
+      padding: 5px 12px;
+      border-radius: 5px;
     }
+    .hero-link:hover { text-decoration: none; border-color: var(--accent); color: var(--accent); }
 
-    .list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .list li {
-      padding: 8px 0;
-      border-bottom: 1px dotted var(--border);
-    }
-
-    .item-title {
+    /* ── Content pages (blog, resume) ── */
+    .content h1 { font-size: 1.5rem; font-weight: 700; margin: 0 0 16px; letter-spacing: -0.02em; }
+    .content h2 {
+      font-size: 1.05rem;
       font-weight: 600;
-      font-size: 0.98rem;
+      margin: 24px 0 8px;
+      letter-spacing: normal;
+      text-transform: none;
+      border-left: none;
+      padding-left: 0;
+      color: var(--text);
     }
+    .content h3 { font-size: 0.9375rem; font-weight: 600; margin: 16px 0 6px; color: var(--text); }
+    .content p { font-size: 0.9375rem; line-height: 1.7; margin: 0 0 12px; }
+    .content ul, .content ol { padding-left: 20px; margin: 0 0 12px; }
+    .content li { font-size: 0.9375rem; line-height: 1.6; margin-bottom: 4px; }
+    .content strong { font-weight: 600; }
+    .content hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+    .content a { color: var(--accent); }
 
-    .item-meta {
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-
-    .item-desc {
-      margin-top: 2px;
-      font-size: 0.92rem;
-    }
-
+    /* ── Footer ── */
     .footer {
-      margin-top: 32px;
+      margin-top: 40px;
       border-top: 1px solid var(--border);
-      padding-top: 12px;
+      padding-top: 14px;
       font-size: 0.8rem;
       color: var(--muted);
       display: flex;
       justify-content: space-between;
-      gap: 12px;
       flex-wrap: wrap;
-    }
-
-    .dot-sep::before {
-      content: "• ";
-      margin: 0 4px;
-      color: var(--border);
-    }
-
-    @media (min-width: 880px) {
-      main {
-        grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-        align-items: flex-start;
-      }
+      gap: 8px;
     }
   </style>
 </head>
 <body>
   <div class="page">
-    <header>
-      <div>
-        <div class="name">{{ .Site.Params.name }}</div>
-        <div class="tagline">
-          {{ .Site.Params.tagline }}
-        </div>
+    <header class="site-header">
+      <div class="header-brand">
+        <a href="/" class="site-name">{{ .Site.Params.name }}</a>
+        <span class="site-role">{{ .Site.Params.tagline }}</span>
       </div>
       <nav>
-        <a href="/">Home</a>
         <a href="/blog">Blog</a>
         <a href="/projects">Projects</a>
         <a href="/#experience">Experience</a>
-        <a href="/#education">Education</a>
-        <a href="/#certifications">Certifications</a>
-        <!-- <a href="/books">Books</a> -->
-        <!-- <a href="/tools">Finance Tools</a> -->
-        <a href="/#about">About</a>
-        <a href="/#contact">Contact</a>
-        <button id="theme-toggle" aria-label="Toggle Dark Mode">
-          <svg class="theme-icon theme-icon-moon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-          <svg class="theme-icon theme-icon-sun" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        <a href="/resume" class="nav-resume">Resume ↗</a>
+        <button id="theme-toggle" aria-label="Toggle theme">
+          <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
         </button>
       </nav>
     </header>
@@ -282,31 +315,22 @@
     {{ block "main" . }}{{ end }}
 
     <div class="footer">
-      <div>
-        
-      </div>
-      <div>
-        <span>Last updated: {{ .Site.Params.lastUpdated }}</span>
-      </div>
+      <div></div>
+      <div>Last updated: {{ .Site.Params.lastUpdated }}</div>
     </div>
   </div>
 
   <script>
     const toggle = document.getElementById('theme-toggle');
     const body = document.body;
-
-    // Check for saved preference or system preference
     const savedTheme = localStorage.getItem('theme');
     const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
     if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
       body.classList.add('dark');
     }
-
     toggle.addEventListener('click', () => {
       body.classList.toggle('dark');
-      const isDark = body.classList.contains('dark');
-      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      localStorage.setItem('theme', body.classList.contains('dark') ? 'dark' : 'light');
     });
   </script>
 </body>
